@@ -3,15 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Lobby</title>
-    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          font-size: 18px;
+          color: var(--tg-theme-text-color);
+          background: var(--tg-theme-bg-color);
+        }
+    </style>
 </head>
 <body>
-    <div class="header">
-        <p id="user_name"></p>
+    <div class="header" id="header">
+
     </div>
 
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script type="text/javascript" src="javascript.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+
+        tg.expand();
+
+        let header = document.getElementById("header");
+
+        let user_name = document.createElement('p');
+        user_name.innerText = `${tg.initDataUnsafe.user.first_name}`;
+        header.append(user_name);
+    </script>
 </body>
 </html>
