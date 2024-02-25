@@ -13,33 +13,61 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: 15px;
+        font-size: 18px;
       }
-      #header {
-        position: relative;
-        background: gray;
-        padding: 50px 0 0 0;
+      header {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 90%;
+        background: lightgray;
+        border-radius: 10px;
       }
-      .main-buttons {
+      nav {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+      #buttons {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
         button {
-            height: 50px;
+            width: 33.3%;
+            height: 60px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 18px;
+            font-weight: bold;
         }
+      }
+      button {
+        background: yellow;
+        border: 0;
       }
    </style>
 </head>
 
 <body>
-    <div id="header">
-        <div id="user_info" style="width: 100%;">
-            <div id="user_photo_frame" style="position: absolute; top: 0px; right: 0px; width: 50px; height: 50px; background: black;"></div>
-        </div>
-        <br>
-        <div class="main-buttons" style="width: 100%;">
+    <header>
+        <nav>
+            <div id="user_name_money" style="margin: 0 100px 0 20px;">
+                <p>Amir</p>
+                <h1>13$</h1>
+            </div>
+            <div id="user_photo">
+                <div style="width: 50px; height: 50px; background: black; margin: 20px 0 0 30px;"></div>
+            </div>
+        </nav>
+        <div id="buttons">
             <button id="deposit_btn">Deposit</button>
             <button id="withdraw_btn">Withdraw</button>
             <button id="history_btn">History</button>
         </div>
-    </div>
+    </header>
 </body>
 
 <script>
@@ -47,22 +75,23 @@
 
    tg.expand();
 
-   let user_info = document.getElementById("header");
-   let user_photo_frame = document.getElementById("user_photo_frame");
+   let user_name_money = document.getElementById("user_name_money");
+   let user_photo = document.getElementById("user_photo");
 
    let user_name = document.createElement("p");
    user_name.innerText = `${tg.initDataUnsafe.user.first_name}`;
-   user_name.style.position = "absolute";
-   user_name.style.top = "0px";
-   user_name.style.left = "0px";
-   
+
+   let user_money = document.createElement("h1");
+   user_money.innerText = "13$";
+
    let user_img = document.createElement("img");
    user_img.src = `${tg.initDataUnsafe.user.photo_url}`
-   user_img.style.width = "40px";
-   user_img.style.height = "40px";
-   user_img.style.margin = "2.5px";
+   user_img.style.width = "50px";
+   user_img.style.height = "50px";
+   user_img.style.margin = "20px 0 0 30px";
 
-   user_info.appendChild(user_name);
-   user_photo_frame.appendChild(user_img);
+   user_name_money.appendChild(user_name);
+   user_name_money.appendChild(user_money);
+   user_photo.appendChild(user_img);
 </script>
 </html>
