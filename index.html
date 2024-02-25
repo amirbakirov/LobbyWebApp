@@ -37,9 +37,9 @@
         button {
             width: 33.3%;
             height: 60px;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 10px;
             font-size: 18px;
             font-weight: bold;
         }
@@ -54,11 +54,12 @@
 <body>
     <header>
         <nav>
-            <div id="user_name_money" style="margin: 0 100px 0 20px;">
-
+            <div id="user_name_photo">
+                <!--<p style="margin-left: 20px;">Amir</p>-->
+                <img src="" style="width: 50px; height: 50px; position: absolute; top: 15px; right: 20px;">
             </div>
-            <div id="user_photo">
-                
+            <div id="user_money">
+                <h1 style="font-size: 36px; margin-left: -40px; margin-top: 50px;">13$</h1>
             </div>
         </nav>
         <div id="buttons">
@@ -67,6 +68,9 @@
             <button id="history_btn">History</button>
         </div>
     </header>
+    <main>
+        
+    </main>
 </body>
 
 <script>
@@ -74,23 +78,29 @@
 
    tg.expand();
 
-   let user_name_money = document.getElementById("user_name_money");
-   let user_photo = document.getElementById("user_photo");
+   let user_name_photo = document.getElementById("user_name_photo");
+   let user_money = document.getElementById("user_money");
 
    let user_name = document.createElement("p");
    user_name.innerText = `${tg.initDataUnsafe.user.first_name}`;
-
-   let user_money = document.createElement("h1");
-   user_money.innerText = "13$";
+   user_name.style.margin-left = "20px";
 
    let user_img = document.createElement("img");
    user_img.src = `${tg.initDataUnsafe.user.photo_url}`
    user_img.style.width = "50px";
    user_img.style.height = "50px";
-   user_img.style.margin = "20px 0 0 30px";
+   user_img.style.position = "absolute";
+   user_img.style.top = "15px";
+   user_img.style.right = "20px";
 
-   user_name_money.appendChild(user_name);
-   user_name_money.appendChild(user_money);
-   user_photo.appendChild(user_img);
+   let user_mon = document.createElement("h1");
+   user_mon.innerText = "$13";
+   user_mon.style.font-size = "36px";
+   user_mon.style.margin-left = "-40px";
+   user_mon.style.margin-top = "50px";
+
+   user_name_photo.appendChild(user_name);
+   user_name_photo.appendChild(user_img);
+   user_money.appendChild(user_mon);
 </script>
 </html>
